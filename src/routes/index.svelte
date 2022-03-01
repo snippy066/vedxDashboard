@@ -1,11 +1,10 @@
 <script>
-    import Search from "../components/search.svelte";
-    import Header from "../components/header.svelte";
-    import DataDisplay from "../components/dataDisplay.svelte";
+	import { onMount } from 'svelte';
+	import Header from '../components/header.svelte';
+    import Search from '../components/search.svelte';
 </script>
 
 <div>
-    <Header/>
-    <Search/>
-    <DataDisplay/>
+	<Header />
+	<Search />
 </div>
