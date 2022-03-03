@@ -7,17 +7,21 @@
 	let val = '';
 
 	const load = async () => {
-		const arr = [];
-		if (val != '') {
-			arr.push(val);
-		}
-
 		const response = await fetch(
-			'https://my-json-server.typicode.com/Ved-X/assignment/orders?' + val
-		);
+			'https://my-json-server.typicode.com/Ved-X/assignment/orders');
 		const data = await response.json();
 		dashData = data;
-		console.log(data);
+		//console.log(data);
+
+		if(val!=''){
+			const asArray=dashData;
+			//console.log(asArray);
+			//console.log(val.toLowerCase()+""+val.toUpperCase());
+			var filtered=asArray.filter(x => x.customer.includes(val.toLowerCase() ||val.toUpperCase()));
+			//console.log(filtered);
+			dashData=filtered;
+
+		}
 	};
 
 	onMount(load);
@@ -51,6 +55,7 @@
 			bind:value={val}
 			name="search"
 			placeholder="Search"
+			on:keyup={load}
 		/>
 		<button type="submit" class="absolute right-0 top-0 mt-5 mr-4" />
 	</div>
